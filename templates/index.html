@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Webhook Updates</title>
+  <style>
+    body { font-family: Arial; margin: 2em; }
+    h1 { color: #444; }
+    ul { padding: 0; }
+    li { list-style: none; margin-bottom: 10px; padding: 8px; background: #f5f5f5; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <h1>Latest GitHub Webhook Events</h1>
+  <ul id="event-list"></ul>
+
+  <script>
+    async function fetchEvents() {
+      const res = await fetch('/webhook/events');
+      const data = await res.json();
+      const list = document.getElementById("event-list");
+      list.innerHTML = "";
+      data.events.forEach(e => {
+        const li = document.createElement("li");
+        li.textContent = e;
+        list.appendChild(li);
+      });
+    }
+
+    fetchEvents();                 // initial fetch
+    setInterval(fetchEvents, 15000);  // every 15 seconds
+  </script>
+</body>
+</html>
