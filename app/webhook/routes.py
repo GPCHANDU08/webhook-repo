@@ -8,30 +8,33 @@ webhook = Blueprint('Webhook', __name__, url_prefix='/webhook')
 @webhook.route('/receiver', methods=["POST"])
 def receiver():
     data = request.get_json()
-
-    action_type = data.get('action')
+    event_type = request.headers.get("X-GitHub-Event", "unknown")
     author = data.get('sender', {}).get('login', 'Unknown')
     timestamp = datetime.utcnow().strftime('%d %B %Y - %I:%M %p UTC')
 
     payload = {
         "author": author,
-        "action_type": action_type,
+        "action_type": event_type,
         "timestamp": timestamp
     }
 
-    if action_type == 'push':
+    if event_type == 'push':
         payload["to_branch"] = data.get('ref', '').split('/')[-1]
-    elif action_type == 'pull_request':
-        pr = data.get('pull_request', {})
-        payload["from_branch"] = pr.get('head', {}).get('ref')
-        payload["to_branch"] = pr.get('base', {}).get('ref')
-    elif action_type == 'merge':
+
+    elif event_type == 'pull_request':
         pr = data.get('pull_request', {})
         payload["from_branch"] = pr.get('head', {}).get('ref')
         payload["to_branch"] = pr.get('base', {}).get('ref')
 
+        # ✅ Check if the PR is merged
+        if pr.get('merged') is True and pr.get('state') == 'closed':
+            payload["action_type"] = "merge"
+        else:
+            payload["action_type"] = "pull_request"
+
     mongo.db.events.insert_one(payload)
     return {"status": "success"}, 200
+
 
 
 @webhook.route('/events', methods=["GET"])

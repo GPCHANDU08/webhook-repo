@@ -9,7 +9,8 @@ def create_app():
     template_path = os.path.join(base_dir, '..', 'templates')
     app = Flask(__name__, template_folder=template_path)
 
-    app.config["MONGO_URI"] = "mongodb+srv://starkC2084:Chandu2084@cluster0.nimw62u.mongodb.net/webhook_db?retryWrites=true&w=majority&appName=Cluster0"
+    app.config["MONGO_URI"] = "mongodb://localhost:27017/webhookdb"
+
     mongo.init_app(app)
 
     app.register_blueprint(webhook)
