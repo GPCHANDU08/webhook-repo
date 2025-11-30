@@ -178,7 +178,7 @@ GET /
 
 ### 🚚 2️⃣ GitHub Webhook Delivery
 
-![Webhook Delivery Screenshot](screenshots/webhook_delivery.png)
+![Webhook Delivery Screenshot](screenshots/webhook delivary.png)
 
 ---
 
@@ -190,7 +190,7 @@ GET /
 
 ### 💻 4️⃣ Flask Server Receiving Events
 
-![Flask Server Demo](./assets/flask-server-demo.gif)
+![Flask Server Demo](screenshots/flask server gif.gif)
 
 ---
 
