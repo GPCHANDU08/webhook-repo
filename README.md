@@ -63,7 +63,7 @@ webhook-repo/
 ### 1️⃣ Clone this repo
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/GPCHANDU08/webhook-repo
 cd webhook-repo
 ```
 
@@ -198,7 +198,7 @@ GET /
 
 Real-time commit → webhook → dashboard update:
 
-![Webhook Demo](screenshots/demo.gif)
+![Webhook Demo](./screenshots/webhook giif .gif)
 
 ---
 
