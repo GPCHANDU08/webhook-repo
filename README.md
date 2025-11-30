@@ -198,7 +198,7 @@ GET /
 
 Real-time commit → webhook → dashboard update:
 
-![Webhook Demo](screenshots/webhookDemo.gif)
+![Webhook Demo](screenshots/webhook4.gif)
 
 ---
 
