@@ -178,7 +178,7 @@ GET /
 
 ### 🚚 2️⃣ GitHub Webhook Delivery
 
-![Webhook Delivery Screenshot](screenshots/webhook delivary.png)
+![Webhook Delivery Screenshot](screenshots/webhook_delivary.png)
 
 ---
 
@@ -190,7 +190,7 @@ GET /
 
 ### 💻 4️⃣ Flask Server Receiving Events
 
-![Flask Server Demo](screenshots/flask server gif.gif)
+![Flask Server Demo](screenshots/flask_server_gif.gif)
 
 ---
 
@@ -198,7 +198,7 @@ GET /
 
 Real-time commit → webhook → dashboard update:
 
-![Webhook Demo](screenshots/webhook giif .gif)
+![Webhook Demo](screenshots/webhook_giif.gif)
 
 ---
 
